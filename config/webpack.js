@@ -20,6 +20,14 @@ module.exports = {
     path: webRoot
   },
   module: {
+    // rules : [
+    //   {
+    //     test: /\.(html)$/,
+    //     use: {
+    //       loader: 'html-loader',
+    //     }
+    //   }
+    // ]
   },
   plugins: webpackPlugins()
 };

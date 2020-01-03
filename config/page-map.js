@@ -22,8 +22,10 @@ module.exports = base => {
 
     return new HtmlWebpackPlugin({
       title: data.title,
+      slug: slug,
       template: template,
-      filename: `${base}/${slug}.html`
+      filename: `${base}/${slug}.html`,
+      foo: 'bar'
     });
   };
 

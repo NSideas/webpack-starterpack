@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
+  <body>
+
+    <%= require('html-loader!./partials/nav.html') %>
+
+    <% var template = htmlWebpackPlugin.options.slug + '.html' %>
+    <%= require('html-loader!./' + template) %>
+
+  </body>
+</html>
