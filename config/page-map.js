@@ -18,10 +18,11 @@ module.exports = base => {
 
   const mapPages = data => {
     let slug = data.slug ? data.slug : kebabCase(data.title);
+    let template = data.template ? data.template : 'src/_layout.html';
 
     return new HtmlWebpackPlugin({
       title: data.title,
-      template: `src/${slug}.html`,
+      template: template,
       filename: `${base}/${slug}.html`
     });
   };

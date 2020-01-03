@@ -13,10 +13,13 @@ module.exports = {
   devtool: 'source-map',
   devServer: {
     contentBase: './dist',
+    open: false
   },
   output: {
     filename: 'main.js',
     path: webRoot
+  },
+  module: {
   },
   plugins: webpackPlugins()
 };
