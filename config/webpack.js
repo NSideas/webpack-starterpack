@@ -1,10 +1,15 @@
 const path = require('path');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const pageMap = require('./page-map');
 
 const webRoot = path.resolve(__dirname, '../dist');
 
 const webpackPlugins = () => {
-  return pageMap(webRoot);
+  const plugins = [
+    new CleanWebpackPlugin()
+  ];
+
+  return plugins.concat(pageMap(webRoot));
 }
 
 module.exports = {
@@ -18,16 +23,6 @@ module.exports = {
   output: {
     filename: 'main.js',
     path: webRoot
-  },
-  module: {
-    // rules : [
-    //   {
-    //     test: /\.(html)$/,
-    //     use: {
-    //       loader: 'html-loader',
-    //     }
-    //   }
-    // ]
   },
   plugins: webpackPlugins()
 };
