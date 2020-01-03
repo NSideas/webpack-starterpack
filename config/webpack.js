@@ -1,31 +1,11 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const pageMap = require('./page-map');
 
 const webRoot = path.resolve(__dirname, '../dist');
 
-const pages = [
-  {
-    title: 'My App',
-    slug: 'index'
-  },
-  {
-    title: 'Sample Page',
-    slug: 'sample-page'
-  }
-];
-
-function webpackPlugins() {
-  // Build HTML pages
-  const mapPages = data => new HtmlWebpackPlugin({
-    title: data.title,
-    template: `src/${data.slug}.html`,
-    filename: `${webRoot}/${data.slug}.html`
-  });
-  return pages.map(page => mapPages(page));
+const webpackPlugins = () => {
+  return pageMap(webRoot);
 }
-
-console.log(webpackPlugins());
-
 
 module.exports = {
   mode: 'development',
