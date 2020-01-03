@@ -1,6 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const webRoot = path.resolve(__dirname, '../dist');
+
 const pages = [
   {
     title: 'My App',
@@ -14,12 +16,15 @@ const pages = [
 
 function webpackPlugins() {
   // Build HTML pages
-  return pages.map(pageInfo => new HtmlWebpackPlugin({
-    title: pageInfo.title,
-    template: `src/${pageInfo.slug}.html`,
-    filename: path.resolve(__dirname, `dist/${pageInfo.slug}.html`)
-  }));
+  const mapPages = data => new HtmlWebpackPlugin({
+    title: data.title,
+    template: `src/${data.slug}.html`,
+    filename: `${webRoot}/${data.slug}.html`
+  });
+  return pages.map(page => mapPages(page));
 }
+
+console.log(webpackPlugins());
 
 
 module.exports = {
@@ -31,7 +36,7 @@ module.exports = {
   },
   output: {
     filename: 'main.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: webRoot
   },
   plugins: webpackPlugins()
 };
