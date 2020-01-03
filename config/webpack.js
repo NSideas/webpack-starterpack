@@ -1,6 +1,9 @@
 const path = require('path');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const pageMap = require('./page-map');
+
+const devMode = process.env.NODE_ENV !== 'production';
 
 const webRoot = path.resolve(__dirname, '../dist');
 
@@ -23,6 +26,33 @@ module.exports = {
   output: {
     filename: 'main.js',
     path: webRoot
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: [
+          { loader: 'babel-loader' },
+          { loader: 'eslint-loader' }
+        ]
+      },
+      {
+        test: /\.s?css$/,
+        use: [
+          MiniCSSExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: { sourceMap: devMode }
+          },
+          {
+            loader: 'sass-loader',
+            options: { sourceMap: devMode }
+          }
+        ]
+      }
+
+    ]
   },
   plugins: webpackPlugins()
 };
