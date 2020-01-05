@@ -1,15 +1,15 @@
 const path = require('path');
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const pageMap = require('./page-map');
+// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const pageMap = require('./config/page-map');
 
 const devMode = process.env.NODE_ENV !== 'production';
 
-const webRoot = path.resolve(__dirname, '../dist');
+const webRoot = path.resolve(__dirname, './dist');
 
 const webpackPlugins = () => {
   const plugins = [
-    new CleanWebpackPlugin()
+    // new CleanWebpackPlugin()
   ];
 
   return plugins.concat(pageMap(webRoot));
@@ -21,7 +21,7 @@ module.exports = {
   devtool: 'source-map',
   devServer: {
     contentBase: './dist',
-    open: false
+    // open: false
   },
   output: {
     filename: 'main.js',
@@ -40,7 +40,9 @@ module.exports = {
       {
         test: /\.s?css$/,
         use: [
-          MiniCSSExtractPlugin.loader,
+          {
+            loader: 'style-loader'
+          },
           {
             loader: 'css-loader',
             options: { sourceMap: devMode }
