@@ -1,16 +1,6 @@
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
-const pages = [
-  {
-    title: 'My App',
-    slug: 'index'
-  },
-  {
-    title: 'Sample Page'
-  }
-];
-
+const pages = require('./pages');
 
 const kebabCase = string => string.replace(/\s+/g, '-').toLowerCase();
 
