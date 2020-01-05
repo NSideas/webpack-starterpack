@@ -26,7 +26,7 @@ module.exports = base => {
       slug: slug,
       template: template,
       filename: `${base}/${slug}.html`,
-      foo: 'bar'
+      foo: 'bar' // Custom page property
     });
   };
 

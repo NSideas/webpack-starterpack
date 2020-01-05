@@ -20,8 +20,7 @@ module.exports = {
   entry: './src/index.js',
   devtool: 'source-map',
   devServer: {
-    contentBase: './dist',
-    // open: false
+    contentBase: './dist'
   },
   output: {
     filename: 'main.js',
