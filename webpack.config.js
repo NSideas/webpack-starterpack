@@ -21,7 +21,8 @@ module.exports = {
   entry: './src/index.js',
   devtool: 'source-map',
   devServer: {
-    contentBase: './dist'
+    contentBase: './dist',
+    open: false
   },
   output: {
     filename: 'assets/main.js',
