@@ -22,6 +22,7 @@ module.exports = {
   devtool: 'source-map',
   devServer: {
     contentBase: './dist',
+    writeToDisk: true,
     open: false
   },
   output: {
