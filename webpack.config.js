@@ -51,8 +51,19 @@ module.exports = {
             options: { sourceMap: devMode }
           }
         ]
+      },
+      {
+        test: /\.(jpe?g|png|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              outputPath: 'assets/img/',
+              name: '[name].[ext]'
+            }
+          }
+        ]
       }
-
     ]
   },
   plugins: webpackPlugins()
