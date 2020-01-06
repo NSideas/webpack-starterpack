@@ -1,8 +1,7 @@
-
 module.exports = [
   {
-    title: 'My App',
-    slug: 'index'
+    title: 'Home',
+    index: true
   },
   {
     title: 'Sample Page'

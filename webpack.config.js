@@ -1,6 +1,7 @@
 const path = require('path');
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
-// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const pageMap = require('./config/page-map');
 
 const devMode = process.env.NODE_ENV !== 'production';
@@ -9,10 +10,10 @@ const webRoot = path.resolve(__dirname, './dist');
 
 const webpackPlugins = () => {
   const plugins = [
-    // new CleanWebpackPlugin()
+    new CleanWebpackPlugin()
   ];
 
-  return plugins.concat(pageMap(webRoot));
+  return plugins.concat( pageMap(webRoot) );
 }
 
 module.exports = {
@@ -23,7 +24,7 @@ module.exports = {
     contentBase: './dist'
   },
   output: {
-    filename: 'main.js',
+    filename: 'assets/main.js',
     path: webRoot
   },
   module: {
@@ -39,9 +40,7 @@ module.exports = {
       {
         test: /\.s?css$/,
         use: [
-          {
-            loader: 'style-loader'
-          },
+          'style-loader',
           {
             loader: 'css-loader',
             options: { sourceMap: devMode }

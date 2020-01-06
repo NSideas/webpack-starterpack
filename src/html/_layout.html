@@ -5,10 +5,15 @@
   </head>
   <body>
 
-    <%= require('html-loader!./partials/nav.html') %>
+    <header>
+      <h1><%= htmlWebpackPlugin.options.title %></h1>
+      <%= require('html-loader!./partials/nav.html') %>
+    </header>
 
     <% var template = htmlWebpackPlugin.options.slug + '.html' %>
-    <%= require('html-loader!./' + template) %>
+    <main>
+      <%= require('html-loader!./' + template) %>
+    </main>
 
   </body>
 </html>
